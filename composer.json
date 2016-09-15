@@ -28,6 +28,7 @@
     },
     "scripts": {
         "post-root-package-install": [
+            "touch database/database.sqlite",
             "php -r \"copy('.env.example', '.env');\""
         ]
     },
