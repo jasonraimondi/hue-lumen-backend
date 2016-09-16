@@ -2,9 +2,12 @@
 
 namespace App\Jobs;
 
+use App\Flipp;
+
 class VoteForScene extends Job
 {
     private $sceneId;
+    private $flipp;
 
     /**
      * Create a new job instance.
@@ -14,6 +17,7 @@ class VoteForScene extends Job
     public function __construct($sceneId)
     {
         $this->sceneId = $sceneId;
+        $this->flipp = new Flipp();
     }
 
     /**
@@ -23,6 +27,6 @@ class VoteForScene extends Job
      */
     public function handle()
     {
-
+        $this->flipp->startScene($this->sceneId);
     }
 }

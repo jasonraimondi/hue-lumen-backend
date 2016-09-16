@@ -2,9 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Flipp;
-use App\Jobs\ExampleJob;
 use App\Jobs\VoteForScene;
-use Queue;
 
 class VoteController extends Controller
 {
@@ -17,8 +15,7 @@ class VoteController extends Controller
 
     public function queue($id)
     {
-        $this->dispatch(new ExampleJob);
-        Queue::push(new VoteForScene($id));
+        dispatch(new VoteForScene($id));
     }
 
     public function show($id)
