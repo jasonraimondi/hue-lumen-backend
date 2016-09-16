@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Flipp;
+use App\FlippSetup;
 use App\Jobs\VoteForScene;
 
 class VoteController extends Controller
@@ -25,6 +26,7 @@ class VoteController extends Controller
 
     public function setup()
     {
-        $this->flipp->setUpScenes();
+        $setup = new FlippSetup();
+        return $setup->setUpScenes();
     }
 }
