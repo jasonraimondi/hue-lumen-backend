@@ -4,6 +4,7 @@
 ### Getting Started
 
 ```bash
+$ composer install
 # Start PHP Server
 $ php70 -S 0.0.0.0:8080 -t ./public
 ```
