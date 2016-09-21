@@ -8,7 +8,9 @@
         "php": ">=5.6.4",
         "laravel/lumen-framework": "5.3.*",
         "vlucas/phpdotenv": "~2.2",
-        "sqmk/phue": "^1.5"
+        "sqmk/phue": "^1.5",
+        "propaganistas/laravel-phone": "^2.7",
+        "twilio/sdk": "5.0.0-RC14"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
