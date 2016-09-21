@@ -11,10 +11,6 @@ module.exports = merge(baseWebpackConfig, {
   debug: false,
   devtool: null,
   plugins: [
-    new CleanWebpackPlugin(['public/assets'], {
-      root: projectRoot,
-      verbose: false
-    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
