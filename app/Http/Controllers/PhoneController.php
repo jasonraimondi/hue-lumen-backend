@@ -27,7 +27,7 @@ class PhoneController extends Controller
                 'message' => 'Please enter a valid phone number.',
             ];
             return response()->json($data, 200);
-    }
+        }
 
         $message = 'Event Farm is awesome: ' . self::WEBSITE_URL;
 

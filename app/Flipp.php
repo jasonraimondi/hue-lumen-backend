@@ -26,7 +26,7 @@ class Flipp
      */
     public function startScene($id)
     {
-        return $this->setScene('scene' . $id);
+        return $this->setScene($id);
     }
 
     /**

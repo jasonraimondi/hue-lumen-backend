@@ -40,45 +40,44 @@ class FlippSetup
 
     public function setUpScenes()
     {
-        $this->createScene(0);
-        $this->setUpScene0();
+        $this->createScene('base');
+        $this->setUpBaseScene();
 
-        $this->createScene(1);
-        $this->setUpScene1();
+        $this->createScene('blue');
+        $this->setUpBlueScene();
 
-        $this->createScene(2);
-        $this->setUpScene2();
+        $this->createScene('yellow');
+        $this->setUpYellowScene();
 
-        $this->createScene(3);
-        $this->setUpScene3();
+        $this->createScene('magenta');
+        $this->setUpMagentaScene();
 
-        $this->createScene(4);
-        $this->setUpScene4();
+        $this->createScene('orange');
+        $this->setUpOrangeScene();
 
-        $this->createScene(5);
-        $this->setUpScene5();
+        $this->createScene('violet');
+        $this->setUpVioletScene();
 
-        $this->createScene(6);
-        $this->setUpScene6();
+        $this->createScene('green');
+        $this->setUpGreenScene();
 
-        $this->createScene(7);
-        $this->setUpScene7();
+        $this->createScene('lightOrange');
+        $this->setUpLightOrangeScene();
 
-        $this->createScene(8);
-        $this->setUpScene8();
-
-        $this->createScene(10);
-        $this->setUpScene10();
+        $this->createScene('red');
+        $this->setUpRedScene();
     }
 
     /**
-     * @param $sceneId
+     * @param string $sceneName
+     * @internal param $sceneId
      */
-    private function createScene(int $sceneId)
+    private function createScene(string $sceneName)
     {
+
         $command = new CreateScene(
-            'scene' . $sceneId,
-            'Scene ' . $sceneId,
+            $sceneName,
+            $sceneName,
             [1,2,3,4,5,6,7,8,9,10,11,12]
         );
         $command->transitionTime(0);
@@ -86,124 +85,112 @@ class FlippSetup
         $this->client->sendCommand($command);
     }
 
-    private function setUpScene10()
+    private function setUpBaseScene()
     {
-        $this->setLightState('scene10', 1, self::WHITE, 0, 0);
-        $this->setLightState('scene10', 2, self::WHITE, 0, 0);
-        $this->setLightState('scene10', 3, self::WHITE, 0, 0);
-        $this->setLightState('scene10', 9, self::WHITE, 0, 0);
-        $this->setLightState('scene10', 10, self::WHITE, 0, 0);
-        $this->setLightState('scene10', 11, self::WHITE, 0, 0);
-        $this->setLightState('scene10', 12, self::WHITE, 0, 0);
-        $this->setLightCluster('scene10', self::WHITE, 0, 0);
+        $this->setLightState('base', 2, self::BLUE);
+        $this->setLightState('base', 9, self::DARK_ORANGE);
+        $this->setLightState('base', 1, self::LIGHT_ORANGE);
+        $this->setLightState('base', 11, self::GREEN);
+        $this->setLightState('base', 12, self::YELLOW);
+        $this->setLightState('base', 3, self::MAGENTA);
+        $this->setLightState('base', 5, self::PURPLE);
+        $this->setLightCluster('base', self::RED);
     }
 
-    private function setUpScene0()
+    private function setUpBlueScene()
     {
-        $this->setLightState('scene0', 1, self::BLUE);
-        $this->setLightState('scene0', 2, self::DARK_ORANGE);
-        $this->setLightState('scene0', 3, self::LIGHT_ORANGE);
-        $this->setLightState('scene0', 9, self::GREEN);
-        $this->setLightState('scene0', 10, self::YELLOW);
-        $this->setLightState('scene0', 11, self::MAGENTA);
-        $this->setLightState('scene0', 12, self::PURPLE);
-        $this->setLightCluster('scene0', self::RED);
+        $this->setLightState('blue', 2, self::WHITE, 0, 254);
+        $this->setLightState('blue', 1, self::BLUE, 0);
+        $this->setLightState('blue', 3, self::BLUE, 0);
+        $this->setLightState('blue', 9, self::BLUE, 0);
+        $this->setLightState('blue', 10, self::BLUE, 0);
+        $this->setLightState('blue', 11, self::BLUE, 0);
+        $this->setLightState('blue', 12, self::BLUE, 0);
+        $this->setLightCluster('blue', self::BLUE, 0);
     }
 
-    private function setUpScene1()
+    private function setUpYellowScene()
     {
-        $this->setLightState('scene1', 1, self::WHITE, 0, 254);
-        $this->setLightState('scene1', 2, self::BLUE, 0);
-        $this->setLightState('scene1', 3, self::BLUE, 0);
-        $this->setLightState('scene1', 9, self::BLUE, 0);
-        $this->setLightState('scene1', 10, self::BLUE, 0);
-        $this->setLightState('scene1', 11, self::BLUE, 0);
-        $this->setLightState('scene1', 12, self::BLUE, 0);
-        $this->setLightCluster('scene1', self::BLUE, 0);
+        $this->setLightState('yellow', 1, self::YELLOW, 0);
+        $this->setLightState('yellow', 2, self::YELLOW, 0);
+        $this->setLightState('yellow', 3, self::YELLOW, 0);
+        $this->setLightState('yellow', 9, self::YELLOW, 0);
+        $this->setLightState('yellow', 10, self::YELLOW, 0);
+        $this->setLightState('yellow', 11, self::YELLOW, 0);
+        $this->setLightState('yellow', 12, self::WHITE, 0, 254);
+        $this->setLightCluster('yellow', self::YELLOW, 0);
     }
 
-    private function setUpScene2()
+    private function setUpMagentaScene()
     {
-        $this->setLightState('scene2', 1, self::DARK_ORANGE, 0);
-        $this->setLightState('scene2', 2, self::WHITE, 0, 254);
-        $this->setLightState('scene2', 3, self::DARK_ORANGE, 0);
-        $this->setLightState('scene2', 9, self::DARK_ORANGE, 0);
-        $this->setLightState('scene2', 10, self::DARK_ORANGE, 0);
-        $this->setLightState('scene2', 11, self::DARK_ORANGE, 0);
-        $this->setLightState('scene2', 12, self::DARK_ORANGE, 0);
-        $this->setLightCluster('scene2', self::DARK_ORANGE, 0);
+        $this->setLightState('magenta', 1, self::MAGENTA, 0);
+        $this->setLightState('magenta', 2, self::MAGENTA, 0);
+        $this->setLightState('magenta', 3, self::WHITE, 0, 254);
+        $this->setLightState('magenta', 9, self::MAGENTA, 0);
+        $this->setLightState('magenta', 10, self::MAGENTA, 0);
+        $this->setLightState('magenta', 11, self::MAGENTA, 0);
+        $this->setLightState('magenta', 12, self::MAGENTA, 0);
+        $this->setLightCluster('magenta', self::MAGENTA, 0);
     }
 
-    private function setUpScene3()
+    private function setUpOrangeScene()
     {
-        $this->setLightState('scene3', 1, self::LIGHT_ORANGE, 0);
-        $this->setLightState('scene3', 2, self::LIGHT_ORANGE, 0);
-        $this->setLightState('scene3', 3, self::WHITE, 0, 254);
-        $this->setLightState('scene3', 9, self::LIGHT_ORANGE, 0);
-        $this->setLightState('scene3', 10, self::LIGHT_ORANGE, 0);
-        $this->setLightState('scene3', 11, self::LIGHT_ORANGE, 0);
-        $this->setLightState('scene3', 12, self::LIGHT_ORANGE, 0);
-        $this->setLightCluster('scene3', self::LIGHT_ORANGE, 0);
+        $this->setLightState('orange', 1, self::DARK_ORANGE, 0);
+        $this->setLightState('orange', 2, self::DARK_ORANGE, 0);
+        $this->setLightState('orange', 3, self::DARK_ORANGE, 0);
+        $this->setLightState('orange', 9, self::WHITE, 0, 254);
+        $this->setLightState('orange', 10, self::DARK_ORANGE, 0);
+        $this->setLightState('orange', 11, self::DARK_ORANGE, 0);
+        $this->setLightState('orange', 12, self::DARK_ORANGE, 0);
+        $this->setLightCluster('orange', self::DARK_ORANGE, 0);
     }
 
-    private function setUpScene4()
+    private function setUpVioletScene()
     {
-        $this->setLightState('scene4', 1, self::GREEN, 0);
-        $this->setLightState('scene4', 2, self::GREEN, 0);
-        $this->setLightState('scene4', 3, self::GREEN, 0);
-        $this->setLightState('scene4', 9, self::WHITE, 0, 254);
-        $this->setLightState('scene4', 10, self::GREEN, 0);
-        $this->setLightState('scene4', 11, self::GREEN, 0);
-        $this->setLightState('scene4', 12, self::GREEN, 0);
-        $this->setLightCluster('scene4', self::GREEN, 0);
+        $this->setLightState('violet', 1, self::PURPLE, 0);
+        $this->setLightState('violet', 2, self::PURPLE, 0);
+        $this->setLightState('violet', 3, self::PURPLE, 0);
+        $this->setLightState('violet', 9, self::PURPLE, 0);
+        $this->setLightState('violet', 10, self::WHITE, 0, 254);
+        $this->setLightState('violet', 11, self::PURPLE, 0);
+        $this->setLightState('violet', 12, self::PURPLE, 0);
+        $this->setLightCluster('violet', self::PURPLE, 0);
     }
 
-    private function setUpScene5()
+    private function setUpGreenScene()
     {
-        $this->setLightState('scene5', 1, self::YELLOW, 0);
-        $this->setLightState('scene5', 2, self::YELLOW, 0);
-        $this->setLightState('scene5', 3, self::YELLOW, 0);
-        $this->setLightState('scene5', 9, self::YELLOW, 0);
-        $this->setLightState('scene5', 10, self::WHITE, 0, 254);
-        $this->setLightState('scene5', 11, self::YELLOW, 0);
-        $this->setLightState('scene5', 12, self::YELLOW, 0);
-        $this->setLightCluster('scene5', self::YELLOW, 0);
+        $this->setLightState('green', 1, self::GREEN, 0);
+        $this->setLightState('green', 2, self::GREEN, 0);
+        $this->setLightState('green', 3, self::GREEN, 0);
+        $this->setLightState('green', 9, self::GREEN, 0);
+        $this->setLightState('green', 10, self::GREEN, 0);
+        $this->setLightState('green', 11, self::WHITE, 0, 254);
+        $this->setLightState('green', 12, self::GREEN, 0);
+        $this->setLightCluster('green', self::GREEN, 0);
     }
 
-    private function setUpScene6()
+    private function setUpLightOrangeScene()
     {
-        $this->setLightState('scene6', 1, self::MAGENTA, 0);
-        $this->setLightState('scene6', 2, self::MAGENTA, 0);
-        $this->setLightState('scene6', 3, self::MAGENTA, 0);
-        $this->setLightState('scene6', 9, self::MAGENTA, 0);
-        $this->setLightState('scene6', 10, self::MAGENTA, 0);
-        $this->setLightState('scene6', 11, self::WHITE, 0, 254);
-        $this->setLightState('scene6', 12, self::MAGENTA, 0);
-        $this->setLightCluster('scene6', self::MAGENTA, 0);
+        $this->setLightState('lightOrange', 1, self::WHITE, 0, 254);
+        $this->setLightState('lightOrange', 2, self::LIGHT_ORANGE, 0);
+        $this->setLightState('lightOrange', 3, self::LIGHT_ORANGE, 0);
+        $this->setLightState('lightOrange', 9, self::LIGHT_ORANGE, 0);
+        $this->setLightState('lightOrange', 10, self::LIGHT_ORANGE, 0);
+        $this->setLightState('lightOrange', 11, self::LIGHT_ORANGE, 0);
+        $this->setLightState('lightOrange', 12, self::LIGHT_ORANGE, 0);
+        $this->setLightCluster('lightOrange', self::LIGHT_ORANGE, 0);
     }
 
-    private function setUpScene7()
+    private function setUpRedScene()
     {
-        $this->setLightState('scene7', 1, self::PURPLE, 0);
-        $this->setLightState('scene7', 2, self::PURPLE, 0);
-        $this->setLightState('scene7', 3, self::PURPLE, 0);
-        $this->setLightState('scene7', 9, self::PURPLE, 0);
-        $this->setLightState('scene7', 10, self::PURPLE, 0);
-        $this->setLightState('scene7', 11, self::PURPLE, 0);
-        $this->setLightState('scene7', 12, self::WHITE, 0, 254);
-        $this->setLightCluster('scene7', self::PURPLE, 0);
-    }
-
-    private function setUpScene8()
-    {
-        $this->setLightState('scene8', 1, self::RED, 0);
-        $this->setLightState('scene8', 2, self::RED, 0);
-        $this->setLightState('scene8', 3, self::RED, 0);
-        $this->setLightState('scene8', 9, self::RED, 0);
-        $this->setLightState('scene8', 10, self::RED, 0);
-        $this->setLightState('scene8', 11, self::RED, 0);
-        $this->setLightState('scene8', 12, self::RED, 0);
-        $this->setLightCluster('scene8', self::WHITE, 0, 254);
+        $this->setLightState('red', 1, self::RED, 0);
+        $this->setLightState('red', 2, self::RED, 0);
+        $this->setLightState('red', 3, self::RED, 0);
+        $this->setLightState('red', 9, self::RED, 0);
+        $this->setLightState('red', 10, self::RED, 0);
+        $this->setLightState('red', 11, self::RED, 0);
+        $this->setLightState('red', 12, self::RED, 0);
+        $this->setLightCluster('red', self::WHITE, 0, 254);
     }
 
     /**

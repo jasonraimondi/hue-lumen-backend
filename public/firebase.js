@@ -2,6 +2,7 @@
 
 var firebase = require('firebase');
 var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+var request = require('request');
 
 var config = {
     apiKey: 'AIzaSyCMrWE7gWzGjHW08YimzSpGgnCXbTbzhMk',
@@ -18,31 +19,33 @@ app.auth().signInAnonymously().catch(function (error) {
     console.log(errorMessage);
 });
 
-app.database().ref('Lights').on('child_changed', function (snapshot, prevChildKey) {
+var timeOut;
 
-    if (typeof prevChildKey === 'string') {
-        var optionNumber = parseInt(prevChildKey.substr(-1)) + 1;
-    } else {
-        return;
-    }
-
-    var request = new XMLHttpRequest();
-
-    request.open('GET', 'http://localhost:8090/vote/' + optionNumber, true);
-
-    request.onload = function() {
-        if (request.status >= 200 && request.status < 400) {
-            console.log('success');
-        } else {
-            console.log('error');
+function playScene(scene) {
+    request.put(
+        'http://10.14.1.146/api/vfcRmQVlEUHHsVzyFHkEGTI4DqZVwbzUQzoxYR3X/groups/1/action',
+        {
+            json: {
+                scene: scene
+            }
+        },
+        function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                // console.log(body)
+            }
         }
-    };
+    );
+}
+app.database().ref('Lights').on('child_changed', function (snapshot) {
 
-    request.onerror = function(error) {
-        console.log(error)
-    };
+    clearTimeout(timeOut);
 
-    request.send();
+    playScene(snapshot.key);
+
+    timeOut = setTimeout(function () {
+        playScene('base');
+    }, 3500);
+
 
 }, function (error) {
     console.log(error);

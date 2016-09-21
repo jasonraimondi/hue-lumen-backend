@@ -14,14 +14,14 @@ class VoteController extends Controller
         $this->flipp = new Flipp();
     }
 
-    public function queue($id)
+    public function queue($sceneName)
     {
-        dispatch(new VoteForScene($id));
+        dispatch(new VoteForScene($sceneName));
     }
 
-    public function show($id)
+    public function show($sceneName)
     {
-        $this->flipp->startScene($id);
+        $this->flipp->startScene($sceneName);
     }
 
     public function setup()
