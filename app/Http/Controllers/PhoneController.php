@@ -24,7 +24,7 @@ class PhoneController extends Controller
         if ($validator->fails()) {
             $data = [
                 'success' => false,
-                'message' => $validator->messages(),
+                'message' => 'Please enter a valid phone number.',
             ];
             return response()->json($data, 200);
     }
