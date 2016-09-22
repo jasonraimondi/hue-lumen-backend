@@ -23,8 +23,8 @@ class FlippSetup
 
     const WHITE = 34128;
     const BLUE = 47125;
-    const DARK_ORANGE = 3322;
-    const LIGHT_ORANGE = 8509;
+    const ORANGE = 3322;
+    const PEACH = 8509;
     const GREEN = 25653;
     const YELLOW = 20719;
     const MAGENTA = 60290;
@@ -87,13 +87,13 @@ class FlippSetup
 
     private function setUpBaseScene()
     {
+        $this->setLightState('base', 1, self::PEACH);
         $this->setLightState('base', 2, self::BLUE);
-        $this->setLightState('base', 9, self::DARK_ORANGE);
-        $this->setLightState('base', 1, self::LIGHT_ORANGE);
+        $this->setLightState('base', 3, self::MAGENTA);
+        $this->setLightState('base', 9, self::ORANGE);
+        $this->setLightState('base', 10, self::PURPLE);
         $this->setLightState('base', 11, self::GREEN);
         $this->setLightState('base', 12, self::YELLOW);
-        $this->setLightState('base', 3, self::MAGENTA);
-        $this->setLightState('base', 5, self::PURPLE);
         $this->setLightCluster('base', self::RED);
     }
 
@@ -135,14 +135,14 @@ class FlippSetup
 
     private function setUpOrangeScene()
     {
-        $this->setLightState('orange', 1, self::DARK_ORANGE, 0);
-        $this->setLightState('orange', 2, self::DARK_ORANGE, 0);
-        $this->setLightState('orange', 3, self::DARK_ORANGE, 0);
+        $this->setLightState('orange', 1, self::ORANGE, 0);
+        $this->setLightState('orange', 2, self::ORANGE, 0);
+        $this->setLightState('orange', 3, self::ORANGE, 0);
         $this->setLightState('orange', 9, self::WHITE, 0, 254);
-        $this->setLightState('orange', 10, self::DARK_ORANGE, 0);
-        $this->setLightState('orange', 11, self::DARK_ORANGE, 0);
-        $this->setLightState('orange', 12, self::DARK_ORANGE, 0);
-        $this->setLightCluster('orange', self::DARK_ORANGE, 0);
+        $this->setLightState('orange', 10, self::ORANGE, 0);
+        $this->setLightState('orange', 11, self::ORANGE, 0);
+        $this->setLightState('orange', 12, self::ORANGE, 0);
+        $this->setLightCluster('orange', self::ORANGE, 0);
     }
 
     private function setUpVioletScene()
@@ -172,13 +172,13 @@ class FlippSetup
     private function setUpLightOrangeScene()
     {
         $this->setLightState('lightOrange', 1, self::WHITE, 0, 254);
-        $this->setLightState('lightOrange', 2, self::LIGHT_ORANGE, 0);
-        $this->setLightState('lightOrange', 3, self::LIGHT_ORANGE, 0);
-        $this->setLightState('lightOrange', 9, self::LIGHT_ORANGE, 0);
-        $this->setLightState('lightOrange', 10, self::LIGHT_ORANGE, 0);
-        $this->setLightState('lightOrange', 11, self::LIGHT_ORANGE, 0);
-        $this->setLightState('lightOrange', 12, self::LIGHT_ORANGE, 0);
-        $this->setLightCluster('lightOrange', self::LIGHT_ORANGE, 0);
+        $this->setLightState('lightOrange', 2, self::PEACH, 0);
+        $this->setLightState('lightOrange', 3, self::PEACH, 0);
+        $this->setLightState('lightOrange', 9, self::PEACH, 0);
+        $this->setLightState('lightOrange', 10, self::PEACH, 0);
+        $this->setLightState('lightOrange', 11, self::PEACH, 0);
+        $this->setLightState('lightOrange', 12, self::PEACH, 0);
+        $this->setLightCluster('lightOrange', self::PEACH, 0);
     }
 
     private function setUpRedScene()
