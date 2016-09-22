@@ -36,6 +36,26 @@ function playScene(scene) {
         }
     );
 }
+function alternateOne() {
+    playScene('xalternate1');
+
+    sleep(500).then(() => {
+        playScene('xalternate2');
+
+        sleep(500).then(() => {
+            playScene('xalternate1');
+
+            sleep(500).then(() => {
+                playScene('xalternate2');
+
+                sleep(500).then(() => {
+                    playScene('xalternate2');
+                    playScene('base');
+                });
+            });
+        });
+    });
+}
 app.database().ref('Lights').on('child_changed', function (snapshot) {
 
     clearTimeout(timeOut);
@@ -43,10 +63,26 @@ app.database().ref('Lights').on('child_changed', function (snapshot) {
     playScene(snapshot.key);
 
     timeOut = setTimeout(function () {
-        playScene('base');
+
+        var randomNumber = numberBetween(1,10);
+
+        if (randomNumber > 2) {
+            playScene('base');
+        } else {
+            alternateOne();
+        }
+
     }, 3500);
 
 
 }, function (error) {
     console.log(error);
 });
+
+function sleep (time) {
+    return new Promise(function (resolve) { setTimeout(resolve, time) });
+}
+
+function numberBetween(start, end) {
+    return Math.floor(Math.random() * ((end - start) + 1) + start);
+}

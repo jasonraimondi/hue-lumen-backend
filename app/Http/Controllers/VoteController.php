@@ -24,6 +24,17 @@ class VoteController extends Controller
         $this->flipp->startScene($sceneName);
     }
 
+    public function alternate()
+    {
+        for ($i=0; $i < 2; $i++) {
+            $this->flipp->startScene('xalternate1');
+            sleep(1);
+            $this->flipp->startScene('xalternate2');
+            sleep(1);
+        }
+        $this->flipp->startScene('base');
+    }
+
     public function setup()
     {
         $setup = new FlippSetup();

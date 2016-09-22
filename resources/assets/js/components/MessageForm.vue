@@ -31,6 +31,7 @@
                 this.$http.post(this.resourceUrl, {phone: this.user.phone}).then(function (response) {
                     this.user.phone = '';
                     this.notification.show = true;
+                    console.log(response.data);
                     this.notification.message = response.data.message;
                     setTimeout(() => {
                         this.notification.show = false;

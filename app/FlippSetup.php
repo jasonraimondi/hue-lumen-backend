@@ -183,14 +183,17 @@ class FlippSetup
 
     private function setUpRedScene()
     {
-        $this->setLightState('red', 1, self::RED, 0);
-        $this->setLightState('red', 2, self::RED, 0);
         $this->setLightState('red', 3, self::RED, 0);
         $this->setLightState('red', 9, self::RED, 0);
+
         $this->setLightState('red', 10, self::RED, 0);
-        $this->setLightState('red', 11, self::RED, 0);
         $this->setLightState('red', 12, self::RED, 0);
-        $this->setLightCluster('red', self::WHITE, 0, 254);
+
+        $this->setLightState('red', 2, self::RED, 0);
+        $this->setLightState('red', 11, self::RED, 0);
+
+        $this->setLightState('red', 1, self::RED, 0);
+        $this->setLightCluster('red', self::RED, 0, 254);
     }
 
     /**
@@ -251,7 +254,7 @@ class FlippSetup
         if ($notRandom) {
             return min(254, $brightness);
         } else {
-            return min(254, $brightness * rand(2, 14) / 10);
+            return min(254, $brightness * rand(7, 14) / 10);
         }
     }
 }
