@@ -9,13 +9,11 @@
     "watch": "webpack --watch --config ./build/webpack.dev.conf.js"
   },
   "dependencies": {
-    "cleave.js": "^0.7.9",
     "firebase": "^3.3.0",
-    "firebase-auth": "^0.1.2",
+    "formatter.js": "^0.1.5",
     "jquery": "^3.1.0",
     "vue": "^1.0.26",
-    "vue-resource": "^1.0.2",
-    "xmlhttprequest": "^1.8.0"
+    "vue-resource": "^1.0.2"
   },
   "devDependencies": {
     "argv": "0.0.2",

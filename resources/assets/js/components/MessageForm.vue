@@ -2,7 +2,7 @@
     <div class="text-center">
         <notification v-if="notification.show"
                       transition="bounce">{{ notification.message }}</notification>
-        <input type="tel" v-model="user.phone" placeholder="Enter Your Cell" id="flipp-phone-input" autofocus>
+        <input type="tel" v-model="user.phone" placeholder="##########" id="flipp-phone-input" autofocus>
         <button v-if="user.phone" class="button large expanded flipp-submit-button" style="background-color:#4cae4c" @click="sendPhone()">Get Started</button>
     </div>
 </template>
@@ -24,7 +24,7 @@
         @extend %flipp;
         font-family: 'Fjalla One', sans-serif;
         color: white;
-        font-size: 55px;
+        font-size: 50px;
         height: 100%;
 
         &:focus {
@@ -34,8 +34,8 @@
 </style>
 
 <script>
-    import Cleave from 'cleave.js';
-    import 'cleave.js/dist/addons/cleave-phone.us.js';
+    import Formatter from 'formatter.js/dist/formatter.js';
+//    import 'cleave.js/dist/addons/cleave-phone.us.js';
     import Notification from './Notification.vue';
 
     export default {
@@ -43,10 +43,9 @@
             Notification
         },
         ready() {
-            var cleave = new Cleave('#flipp-phone-input', {
-                phone: true,
-                phoneRegionCode: 'us',
-                delimiters: ['-','-'],
+            var formatted = new Formatter(document.getElementById('flipp-phone-input'), {
+                'pattern': '({{999}}) {{999}}-{{9999}}',
+                'persistent': true
             });
         },
         data() {
