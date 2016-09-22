@@ -1,10 +1,24 @@
 <template>
-    <div class="callout primary">
-        <p><slot></slot></p>
+    <div class="flipp-notification">
+        <span><slot></slot></span>
     </div>
 </template>
 
 <style>
+    .flipp-notification {
+        font-family: 'Fjalla One', sans-serif;
+        background-color: white;
+        color: black;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 15px 0;
+        z-index: 9999;
+        width: 200px;
+        margin: 0 auto;
+    }
     .bounce-transition {
         display: inline-block; /* otherwise scale animation won't work */
         width: 100%;

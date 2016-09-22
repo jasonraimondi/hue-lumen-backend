@@ -1,5 +1,7 @@
 <template>
     <section id="main-container">
+        <img src="/images/flipp.svg" alt="">
+        <h3 style="color: white;padding-left:8px;">Want to join the party?</h3>
         <message-form></message-form>
     </section>
 </template>
@@ -18,7 +20,7 @@
     }
     #main-container {
         width: 100%;
-        max-width: 400px;
+        max-width: 350px;
     }
 </style>
 

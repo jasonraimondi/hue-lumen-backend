@@ -1,7 +1,6 @@
 'use strict';
 
 var firebase = require('firebase');
-var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 var request = require('request');
 
 var config = {
@@ -66,7 +65,7 @@ app.database().ref('Lights').on('child_changed', function (snapshot) {
 
         var randomNumber = numberBetween(1,10);
 
-        if (randomNumber > 2) {
+        if (randomNumber > 5) {
             playScene('base');
         } else {
             alternateOne();

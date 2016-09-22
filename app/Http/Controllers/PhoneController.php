@@ -8,7 +8,7 @@ use Validator;
 class PhoneController extends Controller
 {
 
-    const WEBSITE_URL = 'https://flipp.jasonraimondi.com';
+    const WEBSITE_URL = 'http://flipp.jasonraimondi.com';
 
     public function index()
     {
@@ -24,12 +24,12 @@ class PhoneController extends Controller
         if ($validator->fails()) {
             $data = [
                 'success' => false,
-                'message' => 'Please enter a valid phone number.',
+                'message' => 'No, we need your cell.',
             ];
             return response()->json($data, 200);
         }
 
-        $message = 'Event Farm is awesome: ' . self::WEBSITE_URL;
+        $message = 'What are you waiting for? Click the link!' . self::WEBSITE_URL;
 
         $sendTwilioMessage = new SendTwilioMessage();
 
@@ -37,7 +37,7 @@ class PhoneController extends Controller
 
         $data = [
             'success' => true,
-            'message' => 'Your message should be arriving shortly.'
+            'message' => 'Your message is on the way!'
         ];
 
         return response()->json($data, 200);
