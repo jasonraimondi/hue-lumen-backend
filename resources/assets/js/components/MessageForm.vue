@@ -2,8 +2,8 @@
     <div class="text-center">
         <notification v-if="notification.show"
                       transition="bounce">{{ notification.message }}</notification>
-        <input type="tel" v-model="user.phone" placeholder="##########" id="flipp-phone-input" autofocus>
-        <button v-if="user.phone" class="button large expanded flipp-submit-button" style="background-color:#4cae4c" @click="sendPhone()">Get Started</button>
+        <input type="tel" v-model="user.phone" placeholder="(###)###-####" id="flipp-phone-input" autofocus>
+        <button :disabled="disabled" class="button large expanded flipp-submit-button" style="background-color:#4cae4c" @click="sendPhone()">Get Started</button>
     </div>
 </template>
 
@@ -50,6 +50,7 @@
         },
         data() {
             return {
+                disabled: false,
                 resourceUrl: '/sendText',
                 notification: {
                     show: false,
@@ -62,15 +63,19 @@
         },
         methods: {
             sendPhone() {
+                this.disabled = true;
+
                 this.$http.post(this.resourceUrl, {phone: this.user.phone}).then(function (response) {
                     this.user.phone = '';
                     this.notification.show = true;
                     console.log(response.data);
                     this.notification.message = response.data.message;
+                    this.disabled = false;
                     setTimeout(() => {
                         this.notification.show = false;
                     }, 3500);
                 }, function (response) {
+                    this.disabled = false;
                     console.log('error', response.data);
                 });
 
